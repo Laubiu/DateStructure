@@ -22,10 +22,11 @@ void Menu()
     printf("菜单：\n");
     printf("1. 显示全体学生信息\n");
     printf("2. 插入学生信息\n");
-    printf("3. 删除学生信息\n");
-    printf("4. 按学号查询学生信息\n");
-    printf("5. 按名查询学生信息\n");
-    printf("6. 退出\n");
+    printf("3. 修改学生信息\n");
+    printf("4. 删除学生信息\n");
+    printf("5. 按学号查询学生信息\n");
+    printf("6. 按名查询学生信息\n");
+    printf("7. 退出\n");
 }
 
 // 初始化学生信息表  
@@ -77,8 +78,39 @@ void PrintList(StudentList *list)
     printf("所有学生信息显示如下:\n");
     for (i = 0; i < list->size; i++) 
 	{
-        printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);
+		printf("输入学生的学号: ");
+        printf("%d\n", list->students[i].sno);
+        printf("输入学生的姓名: ");
+        printf("%s\n", list->students[i].sname);
+        printf("输入学生的性别: ");
+        printf("%s\n", list->students[i].sex);
+        printf("输入学生的年龄: ");
+        printf("%d\n", list->students[i].age);
     }
+}
+
+//修改学生信息 
+void ModifyList(StudentList *list)
+{
+	int i=0;
+	int flag=0;
+	int no;
+	printf("输入要修改的学生的学号：");
+	scanf("%d",&no);
+	for(i=0; i<list->size; i++)
+	{
+		if(list->students[i].sno==no)
+		{
+			flag=1;
+			
+			scanf("%d %s %s %d",&list->students[i].sno,&list->students[i].sname,&list->students[i].sex,&list->students[i].age);
+	        printf("信息修改成功");
+		}
+	}
+	if(flag==0)
+    {
+    	printf("不存在学号为 %d 的学生。\n",no);
+	}
 }
 
 //删除学生信息
@@ -191,27 +223,34 @@ int main()
                 break;
             }
             case 3:
+			{
+				ModifyList(&list);
+				system("pause");
+				system("cls"); 
+                break;
+			} 
+            case 4:
             {
             	DeleteList(&list);
                 system("pause");
             	system("cls");
             	break;
 			}
-            case 4:
+            case 5:
             {
             	SearchList_No(&list);
                 system("pause");
             	system("cls");
             	break;
 			}
-			case 5:
+			case 6:
             {
             	SearchList_Name(&list);
                 system("pause");
             	system("cls");
             	break;
 			}
-            case 6: 
+            case 7: 
 			{
                 printf("退出程序。\n");
                 break;
@@ -222,7 +261,7 @@ int main()
                 break;
             }
         }
-    } while (choice != 6);
+    } while (choice != 7);
 
     return 0;
 }
