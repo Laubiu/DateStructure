@@ -78,39 +78,41 @@ void PrintList(StudentList *list)
     printf("所有学生信息显示如下:\n");
     for (i = 0; i < list->size; i++) 
 	{
-		printf("输入学生的学号: ");
-        printf("%d\n", list->students[i].sno);
-        printf("输入学生的姓名: ");
-        printf("%s\n", list->students[i].sname);
-        printf("输入学生的性别: ");
-        printf("%s\n", list->students[i].sex);
-        printf("输入学生的年龄: ");
-        printf("%d\n", list->students[i].age);
+		 printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);
     }
 }
 
 //修改学生信息 
-void ModifyList(StudentList *list)
-{
-	int i=0;
-	int flag=0;
-	int no;
-	printf("输入要修改的学生的学号：");
-	scanf("%d",&no);
-	for(i=0; i<list->size; i++)
-	{
-		if(list->students[i].sno==no)
-		{
-			flag=1;
-			
-			scanf("%d %s %s %d",&list->students[i].sno,&list->students[i].sname,&list->students[i].sex,&list->students[i].age);
-	        printf("信息修改成功");
-		}
-	}
-	if(flag==0)
-    {
-    	printf("不存在学号为 %d 的学生。\n",no);
-	}
+void ModifyList(StudentList *list)  
+{  
+    int i;
+    int flag = 0;  
+    int no;  
+    printf("输入要修改的学生的学号：");  
+    scanf("%d", &no);  
+
+    for (i = 0; i < list->size; i++)  
+    {  
+        if (list->students[i].sno == no)  
+        {  
+            flag = 1;  
+            printf("输入新的学号: ");  
+            scanf("%d", &list->students[i].sno); // 输入新的学号  
+            printf("输入新的姓名: ");  
+            scanf("%s", list->students[i].sname); // 输入新的姓名  
+            printf("输入新的性别: ");  
+            scanf("%s", list->students[i].sex); // 输入新的性别  
+            printf("输入新的年龄: ");  
+            scanf("%d", &list->students[i].age); // 输入新的年龄  
+            printf("信息修改成功\n");  
+            break; // 找到并修改后退出循环  
+        }  
+    }  
+
+    if (flag == 0)  
+    {  
+        printf("不存在学号为 %d 的学生。\n", no); // 如果未找到学生  
+    }  
 }
 
 //删除学生信息
