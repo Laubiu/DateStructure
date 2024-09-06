@@ -4,57 +4,59 @@
 
 #define MAX_SIZE 100
 
-typedef struct {
-    int sno;          // Ñ§ºÅ
-    char sname[20];  // ĞÕÃû
-    char sex[10];    // ĞÔ±ğ
-    int age;         // ÄêÁä
+typedef struct 
+{
+    int sno;          // å­¦å·
+    char sname[20];  // å§“å
+    char sex[10];    // æ€§åˆ«
+    int age;         // å¹´é¾„
 } Student;
 
-typedef struct {  
+typedef struct 
+{  
     Student students[MAX_SIZE];  
     int size;  
 } StudentList;  
 
-// ²Ëµ¥
+// èœå•
 void Menu() 
 {
-    printf("²Ëµ¥£º\n");
-    printf("1. ÏÔÊ¾È«ÌåÑ§ÉúĞÅÏ¢\n");
-    printf("2. ²åÈëÑ§ÉúĞÅÏ¢\n");
-    printf("3. ĞŞ¸ÄÑ§ÉúĞÅÏ¢\n");
-    printf("4. É¾³ıÑ§ÉúĞÅÏ¢\n");
-    printf("5. °´Ñ§ºÅ²éÑ¯Ñ§ÉúĞÅÏ¢\n");
-    printf("6. °´Ãû²éÑ¯Ñ§ÉúĞÅÏ¢\n");
-    printf("7. ÍË³ö\n");
+    printf("èœå•ï¼š\n");
+    printf("1. æ˜¾ç¤ºå…¨ä½“å­¦ç”Ÿä¿¡æ¯\n");
+    printf("2. æ’å…¥å­¦ç”Ÿä¿¡æ¯\n");
+    printf("3. ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯\n");
+    printf("4. åˆ é™¤å­¦ç”Ÿä¿¡æ¯\n");
+    printf("5. æŒ‰å­¦å·æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯\n");
+    printf("6. æŒ‰åæŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯\n");
+    printf("7. é€€å‡º\n");
 }
 
-// ³õÊ¼»¯Ñ§ÉúĞÅÏ¢±í  
+// åˆå§‹åŒ–å­¦ç”Ÿä¿¡æ¯è¡¨  
 void InitList(StudentList *list) 
 {  
     list->size = 0;  
 }  
 
-// Ìí¼ÓÑ§Éú 
+// æ·»åŠ å­¦ç”Ÿ 
 void AddList(StudentList *list, int count) 
 {
-	int i=0;
+    int i=0;
     for (i = 0; i < count; i++) 
-	{  
+    {  
         if (list->size < MAX_SIZE) 
-		{  
+	{  
             int sno;  
             char sname[20];  
             char sex[10];
             int age;  
 
-            printf("ÊäÈëµÚ %d ¸öÑ§ÉúµÄÑ§ºÅ: ", i + 1);  
+            printf("è¾“å…¥ç¬¬ %d ä¸ªå­¦ç”Ÿçš„å­¦å·: ", i + 1);  
             scanf("%d", &sno);  
-            printf("ÊäÈëµÚ %d ¸öÑ§ÉúµÄĞÕÃû: ", i + 1);  
+            printf("è¾“å…¥ç¬¬ %d ä¸ªå­¦ç”Ÿçš„å§“å: ", i + 1);  
             scanf("%s", sname);  
-            printf("ÊäÈëµÚ %d ¸öÑ§ÉúµÄĞÔ±ğ: ", i + 1);  
+            printf("è¾“å…¥ç¬¬ %d ä¸ªå­¦ç”Ÿçš„æ€§åˆ«: ", i + 1);  
             scanf("%s", sex);  
-            printf("ÊäÈëµÚ %d ¸öÑ§ÉúµÄÄêÁä: ", i + 1);  
+            printf("è¾“å…¥ç¬¬ %d ä¸ªå­¦ç”Ÿçš„å¹´é¾„: ", i + 1);  
             scanf("%d", &age);  
 
             list->students[list->size].sno = sno;  
@@ -63,32 +65,32 @@ void AddList(StudentList *list, int count)
             list->students[list->size].age = age;  
             list->size++;  
         } 
-		else 
-		{  
-            printf("Ñ§ÉúĞÅÏ¢±íÒÑÂú£¬ÎŞ·¨Ìí¼Ó¸ü¶àÑ§Éú¡£\n");  
+	else 
+	{  
+            printf("å­¦ç”Ÿä¿¡æ¯è¡¨å·²æ»¡ï¼Œæ— æ³•æ·»åŠ æ›´å¤šå­¦ç”Ÿã€‚\n");  
             break;  
         }  
     }  
 }
 
-// ´òÓ¡ËùÓĞÑ§ÉúĞÅÏ¢
+// æ‰“å°æ‰€æœ‰å­¦ç”Ÿä¿¡æ¯
 void PrintList(StudentList *list) 
 {
-	int i=0;
-    printf("ËùÓĞÑ§ÉúĞÅÏ¢ÏÔÊ¾ÈçÏÂ:\n");
+    int i=0;
+    printf("æ‰€æœ‰å­¦ç”Ÿä¿¡æ¯æ˜¾ç¤ºå¦‚ä¸‹:\n");
     for (i = 0; i < list->size; i++) 
-	{
-		 printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);
+    {
+	printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);
     }
 }
 
-//ĞŞ¸ÄÑ§ÉúĞÅÏ¢ 
+//ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯ 
 void ModifyList(StudentList *list)  
 {  
     int i;
     int flag = 0;  
     int no;  
-    printf("ÊäÈëÒªĞŞ¸ÄµÄÑ§ÉúµÄÑ§ºÅ£º");  
+    printf("è¾“å…¥è¦ä¿®æ”¹çš„å­¦ç”Ÿçš„å­¦å·ï¼š");  
     scanf("%d", &no);  
 
     for (i = 0; i < list->size; i++)  
@@ -96,102 +98,102 @@ void ModifyList(StudentList *list)
         if (list->students[i].sno == no)  
         {  
             flag = 1;  
-            printf("ÊäÈëĞÂµÄÑ§ºÅ: ");  
-            scanf("%d", &list->students[i].sno); // ÊäÈëĞÂµÄÑ§ºÅ  
-            printf("ÊäÈëĞÂµÄĞÕÃû: ");  
-            scanf("%s", list->students[i].sname); // ÊäÈëĞÂµÄĞÕÃû  
-            printf("ÊäÈëĞÂµÄĞÔ±ğ: ");  
-            scanf("%s", list->students[i].sex); // ÊäÈëĞÂµÄĞÔ±ğ  
-            printf("ÊäÈëĞÂµÄÄêÁä: ");  
-            scanf("%d", &list->students[i].age); // ÊäÈëĞÂµÄÄêÁä  
-            printf("ĞÅÏ¢ĞŞ¸Ä³É¹¦\n");  
-            break; // ÕÒµ½²¢ĞŞ¸ÄºóÍË³öÑ­»·  
+            printf("è¾“å…¥æ–°çš„å­¦å·: ");  
+            scanf("%d", &list->students[i].sno); // è¾“å…¥æ–°çš„å­¦å·  
+            printf("è¾“å…¥æ–°çš„å§“å: ");  
+            scanf("%s", list->students[i].sname); // è¾“å…¥æ–°çš„å§“å  
+            printf("è¾“å…¥æ–°çš„æ€§åˆ«: ");  
+            scanf("%s", list->students[i].sex); // è¾“å…¥æ–°çš„æ€§åˆ«  
+            printf("è¾“å…¥æ–°çš„å¹´é¾„: ");  
+            scanf("%d", &list->students[i].age); // è¾“å…¥æ–°çš„å¹´é¾„  
+            printf("ä¿¡æ¯ä¿®æ”¹æˆåŠŸ\n");  
+            break; // æ‰¾åˆ°å¹¶ä¿®æ”¹åé€€å‡ºå¾ªç¯  
         }  
     }  
 
     if (flag == 0)  
     {  
-        printf("²»´æÔÚÑ§ºÅÎª %d µÄÑ§Éú¡£\n", no); // Èç¹ûÎ´ÕÒµ½Ñ§Éú  
+        printf("ä¸å­˜åœ¨å­¦å·ä¸º %d çš„å­¦ç”Ÿã€‚\n", no); // å¦‚æœæœªæ‰¾åˆ°å­¦ç”Ÿ  
     }  
 }
 
-//É¾³ıÑ§ÉúĞÅÏ¢
+//åˆ é™¤å­¦ç”Ÿä¿¡æ¯
 void DeleteList(StudentList *list) 
 {
-	int i,j;
-	int flag=0;
-	int no;
-	printf("ÊäÈëÒªÉ¾³ıµÄÑ§ÉúµÄÑ§ºÅ£º");
-	scanf("%d",&no); 
-	for(i=0; i<list->size; i++)
+    int i,j;
+    int flag=0;
+    int no;
+    printf("è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿçš„å­¦å·ï¼š"); 
+    scanf("%d",&no); 
+    for(i=0; i<list->size; i++)
+    {
+	if(list->students[i].sno==no)
 	{
-		if(list->students[i].sno==no)
-		{
-			flag=1;
-			for(j=i; j<list->size-1; j++)
-	        {
-		        /*
-				list->students[j].sno=list->students[j+1].sno;
-		        strcpy(list->students[j].sname, list->students[j+1].sname);  
+	    flag=1;
+	    for(j=i; j<list->size-1; j++)
+	    {
+		 /*
+		list->students[j].sno=list->students[j+1].sno;
+		strcpy(list->students[j].sname, list->students[j+1].sname);  
                 strcpy(list->students[j].sex, list->students[j+1].sex);  
-		        list->students[j].age=list->students[j+1].age;
-		        */
-		        list->students[j] = list->students[j+1]; // Ö±½Ó¸´ÖÆ½á¹¹Ìå 
-	        }
-	        list->size--; // ¸üĞÂÑ§ÉúÊıÁ¿  
-	        printf("Ñ§ºÅÎª %d µÄÑ§ÉúĞÅÏ¢ÒÑÉ¾³ı¡£\n", no);  
-		}
+		list->students[j].age=list->students[j+1].age;
+	        */
+		 list->students[j] = list->students[j+1]; // ç›´æ¥å¤åˆ¶ç»“æ„ä½“ 
+	    }
+	    list->size--; // æ›´æ–°å­¦ç”Ÿæ•°é‡  
+            printf("å­¦å·ä¸º %d çš„å­¦ç”Ÿä¿¡æ¯å·²åˆ é™¤ã€‚\n", no);  
+	}
     }
     if(flag==0)
     {
-    	printf("²»´æÔÚÑ§ºÅÎª %d µÄÑ§Éú¡£\n",no);
-	}
+    	printf("ä¸å­˜åœ¨å­¦å·ä¸º %d çš„å­¦ç”Ÿã€‚\n",no);
+    }
 }
 
-//°´Ñ§ºÅ²éÑ¯£¨Î¨Ò»½á¹û£© 
+//æŒ‰å­¦å·æŸ¥è¯¢ï¼ˆå”¯ä¸€ç»“æœï¼‰ 
 void SearchList_No(StudentList *list)
 {
-	int i;
-	int no;
-	int flag=0;
-	printf("ÊäÈëÒª²éÑ¯µÄÑ§ÉúµÄÑ§ºÅ£º");
-	scanf("%d",&no); 
-	for(i=0; i<list->size; i++)
-	{
-		if(list->students[i].sno == no)
-		{
-			flag=1;
-			printf("¸ÃÑ§ÉúµÄĞÅÏ¢ÈçÏÂËùÊ¾£º\n");
-			printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);  
-		}
-	}
-	if(flag==0)
+    int i;
+    int no;
+    int flag=0;
+    printf("è¾“å…¥è¦æŸ¥è¯¢çš„å­¦ç”Ÿçš„å­¦å·ï¼š");
+    scanf("%d",&no); 
+    for(i=0; i<list->size; i++)
     {
-    	printf("²»´æÔÚÑ§ºÅÎª %d µÄÑ§Éú¡£\n",no);
+	if(list->students[i].sno == no)
+	{
+	    flag=1;
+	    printf("è¯¥å­¦ç”Ÿçš„ä¿¡æ¯å¦‚ä¸‹æ‰€ç¤ºï¼š\n");
+            printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);  
 	}
+    }
+    if(flag==0)
+    {
+    	printf("ä¸å­˜åœ¨å­¦å·ä¸º %d çš„å­¦ç”Ÿã€‚\n",no);
+    }
 }
 
-//°´ĞÕÃû²éÑ¯£¨²»Î¨Ò»½á¹û£©
+//æŒ‰å§“åæŸ¥è¯¢ï¼ˆä¸å”¯ä¸€ç»“æœï¼‰
 void SearchList_Name(StudentList *list)
 {
-	int i;
-	char name[20];
-	int flag=0;
-	printf("ÊäÈëÒª²éÑ¯µÄÑ§ÉúµÄĞÕÃû£º");
-	scanf("%s",name); 
-	for(i=0; i<list->size; i++)
-	{
-		if(strcmp(list->students[i].sname,name) == 0)
-		{
-			flag=1;
-			printf("¸ÃÑ§ÉúµÄĞÅÏ¢ÈçÏÂËùÊ¾£º\n");
-			printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);  
-		}
-	}
-	if(flag==0)
+    int i;
+    char name[20];
+    int flag=0;
+    printf("è¾“å…¥è¦æŸ¥è¯¢çš„å­¦ç”Ÿçš„å§“åï¼š");
+    scanf("%s",name); 
+    for(i=0; i<list->size; i++)
     {
-    	printf("²»´æÔÚĞÕÃûÎª %s µÄÑ§Éú¡£\n",name);
+	if(strcmp(list->students[i].sname,name) == 0)
+	{
+	    flag=1;
+	    printf("è¯¥å­¦ç”Ÿçš„ä¿¡æ¯å¦‚ä¸‹æ‰€ç¤ºï¼š\n");
+	    printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);  
 	}
+    }
+    if(flag==0)
+    {
+    	printf("ä¸å­˜åœ¨å§“åä¸º %s çš„å­¦ç”Ÿã€‚\n",name);
+    }
 }
 
 int main() 
@@ -201,65 +203,65 @@ int main()
 
     int choice;
     do {
-        Menu();  // ÏÔÊ¾²Ëµ¥
-        printf("ÇëÑ¡Ôñ²Ù×÷: ");
+        Menu();  // æ˜¾ç¤ºèœå•
+        printf("è¯·é€‰æ‹©æ“ä½œ: ");
         scanf("%d", &choice);
 
         switch (choice) 
-		{
+	{
             case 1: 
-			{
+            {
                 PrintList(&list);
                 system("pause");
                 system("cls");
                 break;
             }
             case 2: 
-			{
+	    {
                 int count;
-                printf("ÊäÈëÒªÌí¼ÓµÄÑ§ÉúÊıÁ¿: ");  
+                printf("è¾“å…¥è¦æ·»åŠ çš„å­¦ç”Ÿæ•°é‡: ");  
                 scanf("%d", &count);  
                 AddList(&list, count); 
                 system("pause");
-				system("cls"); 
+		system("cls"); 
                 break;
             }
             case 3:
-			{
-				ModifyList(&list);
-				system("pause");
-				system("cls"); 
+	    {
+		ModifyList(&list);
+		system("pause");
+		system("cls"); 
                 break;
-			} 
+   	    } 
             case 4:
             {
             	DeleteList(&list);
                 system("pause");
             	system("cls");
             	break;
-			}
+	    }
             case 5:
             {
             	SearchList_No(&list);
                 system("pause");
             	system("cls");
             	break;
-			}
-			case 6:
+	    }
+	    case 6:
             {
             	SearchList_Name(&list);
                 system("pause");
             	system("cls");
             	break;
-			}
+	    }
             case 7: 
-			{
-                printf("ÍË³ö³ÌĞò¡£\n");
+	    {
+                printf("é€€å‡ºç¨‹åºã€‚\n");
                 break;
             }
             default: 
-			{
-                printf("ÎŞĞ§µÄÑ¡Ôñ£¬ÇëÖØĞÂÊäÈë¡£\n");
+	    {
+                printf("æ— æ•ˆçš„é€‰æ‹©ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n");
                 break;
             }
         }
