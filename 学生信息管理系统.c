@@ -82,6 +82,10 @@ void PrintList(StudentList *list)
     {
 	printf("%d  %s  %s  %d\n", list->students[i].sno, list->students[i].sname, list->students[i].sex, list->students[i].age);
     }
+    if(list->size==0)
+    {
+    	printf("没有学生信息。\n");
+    }
 }
 
 //修改学生信息 
